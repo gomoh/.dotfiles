@@ -1,0 +1,279 @@
+"===============================================================
+" Summary: vimrc
+"  Author: gomoh
+"===============================================================
+
+"---------------------------------------------------------------
+" Init: "{{{
+"---------------------------------------------------------------
+set nocompatible
+set all&
+filetype detect
+
+if !isdirectory(expand("~/.vim"))
+	call mkdir(expand("~/.vim"), "", 0700)
+endif
+"}}}
+
+"---------------------------------------------------------------
+" Common: "{{{
+"---------------------------------------------------------------
+set modeline
+set cryptmethod=blowfish
+set helplang=ja,en
+"}}}
+
+"---------------------------------------------------------------
+" Encoding: "{{{
+"---------------------------------------------------------------
+set encoding=utf-8
+scriptencoding utf-8
+
+set fileencoding=utf-8
+set fileencodings=utf-8,cp932
+
+set fileformat=unix
+"}}}
+
+"---------------------------------------------------------------
+" Plugin Option: "{{{
+"---------------------------------------------------------------
+" Neocomplete:
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#data_directory = expand("~/.vim/neocomplete")
+
+" Unite:
+let g:unite_enable_start_insert = 1
+let g:unite_data_directory = expand("~/.vim/unite")
+
+" Vimfiler:
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_ignore_pattern = "^\.git$"
+let g:vimfiler_data_directory = expand("~/.vim/vimfiler")
+
+" Vimshell:
+let g:vimshell_temporary_directory = expand("~/.vim/vimshell")
+let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~")."$", "\\[]()?! ")." "'
+let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+\$ '
+
+" Echodoc:
+let g:echodoc_enable_at_startup = 1
+
+" Quick Run:
+let g:quickrun_config = {}
+let g:quickrun_config['rst'] = {'command': 'sphinx-build', 'hook/sphinx/enable': 1, 'cmdopt': '-b html'}
+
+"}}}
+
+"---------------------------------------------------------------
+" NeoBundle: "{{{
+"---------------------------------------------------------------
+" Init Install: "{{{
+if !isdirectory(expand("~/.vim/bundle/neobundle.vim")) && executable("git")
+	if confirm("want to install 'neobundle.vim' now?", "&yes\n&no", 2) == 1
+		let s:cmd = "git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim"
+		echo s:cmd
+		call system(s:cmd)
+		unlet s:cmd
+	endif
+endif
+"}}}
+
+" Configuration: "{{{
+let g:neobundle#types#git#default_protocol = 'git'
+
+if isdirectory(expand("~/.vim/bundle"))
+
+	if has("vim_starting")
+		set runtimepath+=~/.vim/bundle/neobundle.vim/
+	endif
+
+	call neobundle#rc(expand("~/.vim/bundle/"))
+
+	NeoBundleFetch "Shougo/neobundle.vim"
+
+	" Common
+	NeoBundle "Shougo/vimproc", { "build" : { "unix" : "make -f make_unix.mak -j 4", }, }
+	NeoBundle "Shougo/vimshell"
+	NeoBundle "Shougo/vimfiler"
+
+	" Unite
+	NeoBundle "Shougo/unite.vim"
+
+	" Completion
+	NeoBundle "Shougo/neocomplete.vim"
+
+	" Debug
+	NeoBundle "scrooloose/syntastic"
+	NeoBundle "thinca/vim-quickrun"
+
+	" Colorscheme
+	NeoBundle "ujihisa/unite-colorscheme"
+	NeoBundle "vim-scripts/wombat256.vim"
+
+	" Document
+	NeoBundle "Shougo/echodoc"
+	NeoBundle "vim-jp/vimdoc-ja"
+
+	" Html
+	NeoBundle "othree/html5.vim"
+	NeoBundle "hail2u/vim-css3-syntax"
+
+	NeoBundle "digitaltoad/vim-jade"
+	NeoBundle "motemen/xslate-vim"
+
+	" sphinx
+	NeoBundle "Rykka/riv.vim"
+	NeoBundle "heavenshell/vim-quickrun-hook-sphinx"
+
+	" JavaScript
+	NeoBundle "jelera/vim-javascript-syntax"
+	NeoBundle "pangloss/vim-javascript"
+
+	" erlang
+	NeoBundle "jimenezrick/vimerl"
+
+	" unique
+	NeoBundle "mattn/benchvimrc-vim"
+	NeoBundle "koron/translua-vim"
+
+	NeoBundleCheck
+endif
+"}}}
+
+filetype plugin indent on
+"}}}
+
+"---------------------------------------------------------------
+" Backup Swap Info: "{{{
+"---------------------------------------------------------------
+let s:BackupDir = expand("~/.vim/backup")
+
+if !isdirectory(s:BackupDir)
+	call mkdir(s:BackupDir, "p", 0700)
+endif
+
+set backup
+let &backupdir = s:BackupDir
+let &directory = &backupdir
+
+set viminfo=
+"}}}
+
+"---------------------------------------------------------------
+" Edit: "{{{
+"---------------------------------------------------------------
+set backspace=indent,eol,start
+"}}}
+
+"---------------------------------------------------------------
+" Visual: "{{{
+"---------------------------------------------------------------
+set number
+
+" realtime = matchtime * 100ms
+set showmatch
+set matchtime=8
+
+set list
+set listchars=tab:^_,trail:^
+"}}}
+
+"---------------------------------------------------------------
+" Indent: "{{{
+"---------------------------------------------------------------
+set tabstop=4
+set shiftwidth=4
+set softtabstop=0
+set expandtab
+
+set shiftround
+
+set autoindent
+set smartindent
+"}}}
+
+"---------------------------------------------------------------
+" Search: "{{{
+"---------------------------------------------------------------
+set ignorecase
+set smartcase
+
+set hlsearch
+"}}}
+
+"---------------------------------------------------------------
+" Status Line: "{{{
+"---------------------------------------------------------------
+set laststatus=2
+set statusline=%<%F%m\ %r%h%w[%{(&fenc!=''?&fenc:&enc)}][%{&fileformat}]%y%=[ASCII=%03.3b,0x%02.2B][%4cC,\ %l/%LL][%P]
+"}}}
+
+"---------------------------------------------------------------
+" Command Line: "{{{
+"---------------------------------------------------------------
+set showcmd
+set noshowmode
+
+set wildmenu
+set wildmode=list:longest
+"}}}
+
+"---------------------------------------------------------------
+" ColorScheme: "{{{
+"---------------------------------------------------------------
+set t_Co=256
+if isdirectory(expand("~/.vim/bundle/wombat256.vim"))
+	colorscheme wombat256mod
+endif
+syntax on
+"}}}
+
+"---------------------------------------------------------------
+" Command: "{{{
+"---------------------------------------------------------------
+command! Vsh            : VimShellPop
+
+command! Vex            : VimFiler -split -simple -winwidth=40 -no-quit
+"}}}
+
+"---------------------------------------------------------------
+" Key Map: "{{{
+"---------------------------------------------------------------
+" US keyboard
+nnoremap : ;
+nnoremap ; :
+vnoremap : ;
+vnoremap ; :
+
+" quick help
+nnoremap <C-h> :<C-u>help<Space><C-r><C-w><CR>
+
+" Neocomplete:
+inoremap <C-n> <C-x><C-u>
+inoremap <C-p> <C-x><C-u>
+
+" Unite:
+nmap <C-U> [Unite]
+nnoremap <silent> [Unite]<C-B> :Unite buffer<CR>
+nnoremap <silent> [Unite]<C-F> :Unite file_rec/async<CR>
+nnoremap <silent> [Unite]<C-R> :Unite file_rec/async:<C-r>=expand("%:p:h:")<CR><CR>
+nnoremap <silent> [Unite]<C-T> :Unite tab<CR>
+"}}}
+
+"---------------------------------------------------------------
+" Autocmd: "{{{
+"---------------------------------------------------------------
+augroup MyVimrc
+	autocmd!
+	autocmd BufWritePost $MYVIMRC nested source $MYVIMRC | redraw | echo "reload " . $MYVIMRC
+augroup END
+
+augroup MyFileType
+	autocmd!
+	autocmd FileType jade :setlocal noexpandtab tabstop=2 shiftwidth=2
+augroup END
+"}}}
+
+set secure
