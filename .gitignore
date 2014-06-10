@@ -1,0 +1,15 @@
+*
+!/.gitignore
+
+!/.gitconfig
+
+!/.profile
+!/.bash/
+!/.bash/alias
+!/.bash/rc
+
+!/.ssh/
+!/.ssh/config
+
+!/.vim/
+!/.vim/vimrc
