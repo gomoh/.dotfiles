@@ -148,16 +148,8 @@ filetype plugin indent on
 "---------------------------------------------------------------
 " Backup Swap Info: "{{{
 "---------------------------------------------------------------
-let s:BackupDir = expand("~/.vim/backup")
-
-if !isdirectory(s:BackupDir)
-	call mkdir(s:BackupDir, "p", 0700)
-endif
-
-set backup
-let &backupdir = s:BackupDir
-let &directory = &backupdir
-
+set nobackup
+set swapfile
 set viminfo=
 "}}}
 
