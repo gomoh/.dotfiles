@@ -1,0 +1,6 @@
+# vim:set ft=sh et sw=2 sts=2:
+alias vi='vim'
+
+alias ls='ls -l --color=auto'
+alias grep='grep --color=auto'
+alias tree='tree -C'

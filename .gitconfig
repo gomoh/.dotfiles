@@ -2,7 +2,7 @@
 	path = ~/.gitconfig.local
 [core]
 	editor = vim -c \"set fenc=utf-8\"
-	pager = lv -c
+	pager = less
 [color]
 	ui = auto
 [merge]
