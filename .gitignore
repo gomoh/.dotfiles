@@ -13,3 +13,7 @@
 
 !/.vim/
 !/.vim/vimrc
+
+!/usr/
+!/usr/sbin/
+!/usr/sbin/viminstall
