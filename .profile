@@ -10,3 +10,7 @@ fi
 if [ -d ~/usr/bin ]; then
   PATH=~/usr/bin:${PATH}
 fi
+
+if [ -d ~/usr/sbin ]; then
+  PATH=~/usr/sbin:${PATH}
+fi
