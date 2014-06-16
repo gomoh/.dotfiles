@@ -7,6 +7,6 @@ if [ -n ${BASH_VERSION} ]; then
   fi
 fi
 
-if [ -d ~/local/bin ]; then
-  PATH=~/local/bin:${PATH}
+if [ -d ~/usr/bin ]; then
+  PATH=~/usr/bin:${PATH}
 fi
