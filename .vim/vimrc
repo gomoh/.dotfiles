@@ -265,6 +265,7 @@ augroup END
 augroup MyFileType
 	autocmd!
 	autocmd FileType jade :setlocal noexpandtab tabstop=2 shiftwidth=2
+	autocmd FileType sh   :setlocal tabstop=2 shiftwidth=2
 augroup END
 "}}}
 
