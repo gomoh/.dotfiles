@@ -19,6 +19,13 @@ configure_options=(
 --with-luajit
 )
 
+while getopts :f opt; do
+  case $opt in
+    f)
+      F_force=defined;;
+  esac
+done
+
 # init repository.
 if [[ ! -d ${srcdir} ]]; then
   git clone ${repository} ${srcdir}
