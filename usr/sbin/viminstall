@@ -20,8 +20,9 @@ configure_options=(
 )
 
 # init repository.
-if [ ! -d ${srcdir} ]; then
+if [[ ! -d ${srcdir} ]]; then
   git clone ${repository} ${srcdir}
+  F_force=defined
 fi
 
 # working in git repository.
@@ -37,7 +38,7 @@ git pull
 new_hash=`eval ${hash_cmd}`
 
 # if there is update.
-if [ ${old_hash} != ${new_hash} ]; then
+if [[ ${old_hash} != ${new_hash} || -n ${F_force} ]]; then
   ./configure ${configure_options[@]} && make -j ${cpu_cores} && make install
 fi
 
