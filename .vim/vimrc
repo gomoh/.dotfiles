@@ -37,19 +37,19 @@ set fileformat=unix
 " Neocomplete:
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_auto_select = 1
-let g:neocomplete#data_directory = expand("~/.vim/neocomplete")
+let g:neocomplete#data_directory = expand("~/.vim/.bundle-work/neocomplete")
 
 " Unite:
 let g:unite_enable_start_insert = 1
-let g:unite_data_directory = expand("~/.vim/unite")
+let g:unite_data_directory = expand("~/.vim/.bundle-work/unite")
 
 " Vimfiler:
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_ignore_pattern = "^\.git$"
-let g:vimfiler_data_directory = expand("~/.vim/vimfiler")
+let g:vimfiler_data_directory = expand("~/.vim/.bundle-work/vimfiler")
 
 " Vimshell:
-let g:vimshell_temporary_directory = expand("~/.vim/vimshell")
+let g:vimshell_temporary_directory = expand("~/.vim/.bundle-work/vimshell")
 let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~")."$", "\\[]()?! ")." "'
 let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+\$ '
 
@@ -63,9 +63,9 @@ let g:quickrun_config['rst'] = {'command': 'sphinx-build', 'hook/sphinx/enable':
 " NeoBundle: "{{{
 "---------------------------------------------------------------
 " Init Install: "{{{
-if !isdirectory(expand("~/.vim/bundle/neobundle.vim")) && executable("git")
+if !isdirectory(expand("~/.vim/.bundle/neobundle.vim")) && executable("git")
 	if confirm("want to install 'neobundle.vim' now?", "&yes\n&no", 2) == 1
-		let s:cmd = "git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim"
+		let s:cmd = "git clone git://github.com/Shougo/neobundle.vim ~/.vim/.bundle/neobundle.vim"
 		echo s:cmd
 		call system(s:cmd)
 		unlet s:cmd
@@ -76,13 +76,13 @@ endif
 " Configuration: "{{{
 let g:neobundle#types#git#default_protocol = 'git'
 
-if isdirectory(expand("~/.vim/bundle"))
+if isdirectory(expand("~/.vim/.bundle"))
 
 	if has("vim_starting")
-		set runtimepath+=~/.vim/bundle/neobundle.vim/
+		set runtimepath+=~/.vim/.bundle/neobundle.vim/
 	endif
 
-	call neobundle#rc(expand("~/.vim/bundle/"))
+	call neobundle#rc(expand("~/.vim/.bundle/"))
 
 	NeoBundleFetch "Shougo/neobundle.vim"
 
