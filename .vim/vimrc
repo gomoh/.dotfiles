@@ -135,6 +135,7 @@ filetype plugin indent on
 "---------------------------------------------------------------
 set nobackup
 set swapfile
+set noundofile
 set viminfo=
 "}}}
 
