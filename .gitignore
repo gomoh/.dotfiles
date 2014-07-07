@@ -1,19 +1,25 @@
-*
-!/.gitignore
+### ignore all. {{{
+/*
+#}}}
 
+### but, specific not ignored files and directories. {{{
+!/.gitignore
 !/.gitconfig
 
 !/.profile
-!/.bash/
-!/.bash/alias
-!/.bash/rc
 
-!/.ssh/
 !/.ssh/config
 
-!/.vim/
-!/.vim/vimrc
-
-!/usr/
-!/usr/sbin/
 !/usr/sbin/viminstall
+
+# direcotory.
+!/.bash
+!/.vim
+#}}}
+
+### further, ignore settings overwrite. {{{
+/.bash/history
+
+/.vim/.bundle/
+/.vim/.bundle-work/
+#}}}
