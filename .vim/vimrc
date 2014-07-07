@@ -9,10 +9,6 @@
 set nocompatible
 set all&
 filetype detect
-
-if !isdirectory(expand("~/.vim"))
-	call mkdir(expand("~/.vim"), "", 0700)
-endif
 "}}}
 
 "---------------------------------------------------------------
@@ -212,9 +208,7 @@ syntax on
 "---------------------------------------------------------------
 " Command: "{{{
 "---------------------------------------------------------------
-command! Vsh            : VimShellPop
-
-command! Vex            : VimFiler -split -simple -winwidth=40 -no-quit
+command! Vex : VimFiler -split -simple -winwidth=40 -no-quit
 "}}}
 
 "---------------------------------------------------------------
@@ -251,7 +245,6 @@ augroup END
 
 augroup MyFileType
 	autocmd!
-	autocmd FileType jade :setlocal noexpandtab tabstop=2 shiftwidth=2
 	autocmd FileType sh   :setlocal tabstop=2 shiftwidth=2
 augroup END
 "}}}
