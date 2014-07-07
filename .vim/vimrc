@@ -108,10 +108,6 @@ if isdirectory(expand("~/.vim/bundle"))
 	NeoBundle "scrooloose/syntastic"
 	NeoBundle "thinca/vim-quickrun"
 
-	" Colorscheme
-	NeoBundle "ujihisa/unite-colorscheme"
-	NeoBundle "vim-scripts/wombat256.vim"
-
 	" Document
 	NeoBundle "Shougo/echodoc"
 	NeoBundle "vim-jp/vimdoc-ja"
@@ -216,9 +212,7 @@ set wildmode=list:longest
 " ColorScheme: "{{{
 "---------------------------------------------------------------
 set t_Co=256
-if isdirectory(expand("~/.vim/bundle/wombat256.vim"))
-	colorscheme wombat256mod
-endif
+colorscheme wombat256mod
 syntax on
 "}}}
 
