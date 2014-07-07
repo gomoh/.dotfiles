@@ -243,11 +243,6 @@ augroup MyVimrc
 	autocmd!
 	autocmd BufWritePost $MYVIMRC nested source $MYVIMRC | redraw | echo "reload " . $MYVIMRC
 augroup END
-
-augroup MyFileType
-	autocmd!
-	autocmd FileType sh   :setlocal tabstop=2 shiftwidth=2
-augroup END
 "}}}
 
 set secure
