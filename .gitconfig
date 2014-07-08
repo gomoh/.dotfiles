@@ -1,12 +1,12 @@
 [include]
-	path = ~/.gitconfig.local
+    path = ~/.gitconfig.local
 [user]
-	name = gomoh
-	email = cs.gom.oh@gmail.com
+    name = gomoh
+    email = cs.gom.oh@gmail.com
 [core]
-	editor = vim -c \"set fenc=utf-8\"
-	pager = less
+    editor = vim -c \"set fenc=utf-8\"
+    pager = less
 [color]
-	ui = auto
+    ui = auto
 [merge]
-	tool = vimdiff
+    tool = vimdiff
