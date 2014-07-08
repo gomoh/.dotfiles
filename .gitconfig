@@ -10,3 +10,12 @@
     ui = auto
 [merge]
     tool = vimdiff
+[log]
+    date = iso
+[alias]
+    vc = commit --verbose
+    st = status --short --branch
+    # log format
+    #   colors : normal black red green yellow blue magenta cyan white
+    #   style  : bold dim ul blink reverse
+    tr = log --graph --all --abbrev-commit --format='%C(bold blue)%h%C(reset) %C(bold white)%an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n  %x5c_ %s'
