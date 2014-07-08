@@ -1,5 +1,8 @@
 [include]
 	path = ~/.gitconfig.local
+[user]
+	name = gomoh
+	email = cs.gom.oh@gmail.com
 [core]
 	editor = vim -c \"set fenc=utf-8\"
 	pager = less
