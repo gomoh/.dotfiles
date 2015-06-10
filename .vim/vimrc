@@ -64,12 +64,12 @@ let g:quickrun_config['rst'] = {'command': 'sphinx-build', 'hook/sphinx/enable':
 "---------------------------------------------------------------
 " Init Install: "{{{
 if !isdirectory(expand("~/.vim/.bundle/neobundle.vim")) && executable("git")
-	if confirm("want to install 'neobundle.vim' now?", "&yes\n&no", 2) == 1
-		let s:cmd = "git clone git://github.com/Shougo/neobundle.vim ~/.vim/.bundle/neobundle.vim"
-		echo s:cmd
-		call system(s:cmd)
-		unlet s:cmd
-	endif
+  if confirm("want to install 'neobundle.vim' now?", "&yes\n&no", 2) == 1
+    let s:cmd = "git clone git://github.com/Shougo/neobundle.vim ~/.vim/.bundle/neobundle.vim"
+    echo s:cmd
+    call system(s:cmd)
+    unlet s:cmd
+  endif
 endif
 "}}}
 
@@ -78,54 +78,54 @@ let g:neobundle#types#git#default_protocol = 'git'
 
 if isdirectory(expand("~/.vim/.bundle"))
 
-	if has("vim_starting")
-		set runtimepath+=~/.vim/.bundle/neobundle.vim/
-	endif
+  if has("vim_starting")
+    set runtimepath+=~/.vim/.bundle/neobundle.vim/
+  endif
 
-	call neobundle#begin(expand("~/.vim/.bundle/"))
+  call neobundle#begin(expand("~/.vim/.bundle/"))
 
-	NeoBundleFetch "Shougo/neobundle.vim"
+  NeoBundleFetch "Shougo/neobundle.vim"
 
-	" Common
-	NeoBundle "Shougo/vimproc", { "build" : { "unix" : "make -f make_unix.mak -j 4", }, }
-	NeoBundle "Shougo/vimshell"
-	NeoBundle "Shougo/vimfiler"
+  " Common
+  NeoBundle "Shougo/vimproc", { "build" : { "unix" : "make -f make_unix.mak -j 4", }, }
+  NeoBundle "Shougo/vimshell"
+  NeoBundle "Shougo/vimfiler"
 
-	" Unite
-	NeoBundle "Shougo/unite.vim"
+  " Unite
+  NeoBundle "Shougo/unite.vim"
 
-	" Completion
-	NeoBundle "Shougo/neocomplete.vim"
+  " Completion
+  NeoBundle "Shougo/neocomplete.vim"
 
-	" Debug
-	NeoBundle "scrooloose/syntastic"
-	NeoBundle "thinca/vim-quickrun"
+  " Debug
+  NeoBundle "scrooloose/syntastic"
+  NeoBundle "thinca/vim-quickrun"
 
-	" Document
-	NeoBundle "vim-jp/vimdoc-ja"
+  " Document
+  NeoBundle "vim-jp/vimdoc-ja"
 
-	" Html
-	NeoBundle "othree/html5.vim"
-	NeoBundle "hail2u/vim-css3-syntax"
+  " Html
+  NeoBundle "othree/html5.vim"
+  NeoBundle "hail2u/vim-css3-syntax"
 
-	" sphinx
-	NeoBundle "Rykka/riv.vim"
-	NeoBundle "heavenshell/vim-quickrun-hook-sphinx"
+  " sphinx
+  NeoBundle "Rykka/riv.vim"
+  NeoBundle "heavenshell/vim-quickrun-hook-sphinx"
 
-	" JavaScript
-	NeoBundle "jelera/vim-javascript-syntax"
-	NeoBundle "pangloss/vim-javascript"
+  " JavaScript
+  NeoBundle "jelera/vim-javascript-syntax"
+  NeoBundle "pangloss/vim-javascript"
 
-	" erlang
-	NeoBundle "jimenezrick/vimerl"
+  " erlang
+  NeoBundle "jimenezrick/vimerl"
 
-	" unique
-	NeoBundle "mattn/benchvimrc-vim"
-	NeoBundle "koron/translua-vim"
+  " unique
+  NeoBundle "mattn/benchvimrc-vim"
+  NeoBundle "koron/translua-vim"
 
-	call neobundle#end()
+  call neobundle#end()
 
-	NeoBundleCheck
+  NeoBundleCheck
 endif
 "}}}
 
@@ -242,8 +242,8 @@ nnoremap <silent> [Unite]<C-T> :Unite tab<CR>
 " Autocmd: "{{{
 "---------------------------------------------------------------
 augroup MyVimrc
-	autocmd!
-	autocmd BufWritePost $MYVIMRC nested source $MYVIMRC | redraw | echo "reload " . $MYVIMRC
+  autocmd!
+  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC | redraw | echo "reload " . $MYVIMRC
 augroup END
 "}}}
 
