@@ -1,0 +1,19 @@
+/.bash/history
+
+/.ssh/
+# "git add --force .ssh/config"
+
+/.vim/.bundle/
+/.vim/.bundle-work/
+
+
+# github/gitignore code block. {{{
+# https://github.com/github/gitignore/blob/master/Global/Vim.gitignore
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+# }}}
+
