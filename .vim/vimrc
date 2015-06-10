@@ -17,6 +17,8 @@ filetype detect
 set modeline
 set cryptmethod=blowfish
 set helplang=ja,en
+set spell
+set spelllang+=cjk
 "}}}
 
 "---------------------------------------------------------------
@@ -163,9 +165,9 @@ set listchars=tab:^_,trail:^
 "---------------------------------------------------------------
 " Indent: "{{{
 "---------------------------------------------------------------
-set tabstop=4
-set shiftwidth=4
-set softtabstop=0
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 
 set shiftround
@@ -179,7 +181,7 @@ set smartindent
 "---------------------------------------------------------------
 set ignorecase
 set smartcase
-
+set incsearch
 set hlsearch
 "}}}
 
