@@ -2,15 +2,10 @@
 
 if [ -n ${BASH_VERSION} ]; then
   # include rcfile.
-  if [ -f ~/.bash/rc ]; then
-    . ~/.bash/rc
-  fi
+  [ -f ~/.bash/rc ] && . ~/.bash/rc
 fi
 
-if [ -d ~/usr/bin ]; then
-  PATH=~/usr/bin:${PATH}
-fi
-
-if [ -d ~/usr/sbin ]; then
-  PATH=~/usr/sbin:${PATH}
-fi
+[ -d ~/usr/bin ]        && PATH=~/usr/bin:${PATH}
+[ -d ~/usr/sbin ]       && PATH=~/usr/sbin:${PATH}
+[ -d ~/usr/local/bin ]  && PATH=~/usr/local/bin:${PATH}
+[ -d ~/usr/local/sbin ] && PATH=~/usr/local/sbin:${PATH}
