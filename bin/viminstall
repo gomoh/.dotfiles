@@ -8,10 +8,10 @@ readonly cpu_cores=`cat /proc/cpuinfo | grep processor | wc -l`
 readonly hash_cmd="git log -1 --pretty=format:\"%h\" | cat"
 
 readonly repository=git://github.com/vim-jp/vim.git
-readonly srcdir=~/usr/src/vim
+readonly srcdir=~/usr/local/src/vim
 # NOTE. configure script do not expand "~".
 readonly configure_options=(
---prefix=${HOME}/usr
+--prefix=${HOME}/usr/local
 --enable-multibyte
 --enable-fontset
 --with-features=huge
