@@ -17,6 +17,7 @@ update:
 	git pull origin master
 
 deploy:
+	@mkdir -p ${FHS_ROOT}
 	@$(foreach f, ${DOT_ENTRY}, ln -sfnTv $(abspath ${f}) ${HOME}/${f};)
 	@$(foreach f, ${FHS_ENTRY}, ln -sfnTv $(abspath ${f}) ${FHS_ROOT}/${f};)
 
