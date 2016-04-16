@@ -16,12 +16,11 @@ install: update deploy
 update:
 	git pull origin master
 
-deploy: deploy-ssh
+deploy:
+	@mkdir -p ${HOME}/.ssh
+	@ln -sfnTv $(abspath .ssh/config) ${HOME}/.ssh/config
+
 	@mkdir -p ${FHS_ROOT}
 	@$(foreach f, ${DOT_ENTRY}, ln -sfnTv $(abspath ${f}) ${HOME}/${f};)
 	@$(foreach f, ${FHS_ENTRY}, ln -sfnTv $(abspath ${f}) ${FHS_ROOT}/${f};)
-
-deploy-ssh:
-	@mkdir -p ${HOME}/.ssh
-	@ln -sfnTv $(abspath .ssh/config) ${HOME}/.ssh/config
 
