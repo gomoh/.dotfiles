@@ -1,11 +1,10 @@
 /.bash/history
 
-/.ssh/
-# "git add --force .ssh/config"
+/.vim/dein.d/
+/.cache/**
 
-/.vim/.bundle/
-/.vim/.bundle-work/
-
+!**/.gitignore
+!**/.gitkeep
 
 # github/gitignore code block. {{{
 # https://github.com/github/gitignore/blob/master/Global/Vim.gitignore

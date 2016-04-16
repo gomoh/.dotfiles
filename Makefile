@@ -1,4 +1,4 @@
-DOT_EXCLUDES    := .git .gitignore
+DOT_EXCLUDES    := .git .gitignore .ssh
 DOT_ENTRY       := $(filter-out ${DOT_EXCLUDES}, $(wildcard .??*))
 
 FHS_ROOT        := ${HOME}/usr
@@ -17,6 +17,9 @@ update:
 	git pull origin master
 
 deploy:
+	@mkdir -p ${HOME}/.ssh
+	@ln -sfnTv $(abspath .ssh/config) ${HOME}/.ssh/config
+
 	@mkdir -p ${FHS_ROOT}
 	@$(foreach f, ${DOT_ENTRY}, ln -sfnTv $(abspath ${f}) ${HOME}/${f};)
 	@$(foreach f, ${FHS_ENTRY}, ln -sfnTv $(abspath ${f}) ${FHS_ROOT}/${f};)

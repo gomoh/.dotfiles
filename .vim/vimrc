@@ -39,19 +39,15 @@ set fileformat=unix
 " Neocomplete:
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_auto_select = 1
-let g:neocomplete#data_directory = expand("~/.vim/.bundle-work/neocomplete")
 
 " Unite:
 let g:unite_enable_start_insert = 1
-let g:unite_data_directory = expand("~/.vim/.bundle-work/unite")
 
 " Vimfiler:
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_ignore_pattern = "^\.git$"
-let g:vimfiler_data_directory = expand("~/.vim/.bundle-work/vimfiler")
 
 " Vimshell:
-let g:vimshell_temporary_directory = expand("~/.vim/.bundle-work/vimshell")
 let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~")."$", "\\[]()?! ")." "'
 let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+\$ '
 
@@ -62,76 +58,33 @@ let g:quickrun_config['rst'] = {'command': 'sphinx-build', 'hook/sphinx/enable':
 "}}}
 
 "---------------------------------------------------------------
-" NeoBundle: "{{{
+" Dein: "{{{
 "---------------------------------------------------------------
-" Init Install: "{{{
-if !isdirectory(expand("~/.vim/.bundle/neobundle.vim")) && executable("git")
-  if confirm("want to install 'neobundle.vim' now?", "&yes\n&no", 2) == 1
-    let s:cmd = "git clone git://github.com/Shougo/neobundle.vim ~/.vim/.bundle/neobundle.vim"
-    echo s:cmd
-    call system(s:cmd)
-    unlet s:cmd
-  endif
+" dein.vim directory.
+let s:work = expand('~/.vim/dein.d')
+let s:dein = s:work . '/repos/github.com/Shougo/dein.vim'
+let s:toml = expand('~/.vim/plugins.toml')
+
+if &compatible
+  set nocompatible
 endif
-"}}}
 
-" Configuration: "{{{
-let g:neobundle#types#git#default_protocol = 'git'
-
-if isdirectory(expand("~/.vim/.bundle"))
-
-  if has("vim_starting")
-    set runtimepath+=~/.vim/.bundle/neobundle.vim/
-  endif
-
-  call neobundle#begin(expand("~/.vim/.bundle/"))
-
-  NeoBundleFetch "Shougo/neobundle.vim"
-
-  " Common
-  NeoBundle "Shougo/vimproc", { "build" : { "unix" : "make -f make_unix.mak -j 4", }, }
-  NeoBundle "Shougo/vimshell"
-  NeoBundle "Shougo/vimfiler"
-
-  " Unite
-  NeoBundle "Shougo/unite.vim"
-
-  " Completion
-  NeoBundle "Shougo/neocomplete.vim"
-
-  " Debug
-  NeoBundle "scrooloose/syntastic"
-  NeoBundle "thinca/vim-quickrun"
-
-  " Document
-  NeoBundle "vim-jp/vimdoc-ja"
-
-  " Html
-  NeoBundle "othree/html5.vim"
-  NeoBundle "hail2u/vim-css3-syntax"
-
-  " sphinx
-  NeoBundle "Rykka/riv.vim"
-  NeoBundle "heavenshell/vim-quickrun-hook-sphinx"
-
-  " JavaScript
-  NeoBundle "jelera/vim-javascript-syntax"
-  NeoBundle "pangloss/vim-javascript"
-
-  " erlang
-  NeoBundle "jimenezrick/vimerl"
-
-  " unique
-  NeoBundle "mattn/benchvimrc-vim"
-  NeoBundle "koron/translua-vim"
-
-  call neobundle#end()
-
-  NeoBundleCheck
+" dein.vim install.
+if !isdirectory(s:dein)
+  execute '!git clone https://github.com/Shougo/dein.vim' s:dein
 endif
-"}}}
+
+execute 'set runtimepath^=' . s:dein
+
+call dein#begin(s:work)
+call dein#load_toml(s:toml)
+call dein#end()
 
 filetype plugin indent on
+
+if dein#check_install()
+  call dein#install()
+endif
 "}}}
 
 "---------------------------------------------------------------
