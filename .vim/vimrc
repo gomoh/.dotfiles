@@ -17,8 +17,6 @@ filetype detect
 set modeline
 set cryptmethod=blowfish
 set helplang=ja,en
-set spell
-set spelllang+=cjk
 "}}}
 
 "---------------------------------------------------------------
