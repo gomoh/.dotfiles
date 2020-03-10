@@ -1,8 +1,3 @@
-/.bash/history
-
-/.vim/dein.d/
-/.cache/**
-
 !**/.gitignore
 !**/.gitkeep
 
