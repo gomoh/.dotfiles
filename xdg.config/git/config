@@ -1,17 +1,18 @@
+# vim: set ft=gitconfig :
 [include]
     path = ~/.gitconfig.local
 [user]
     name = gomoh
     email = cs.gom.oh@gmail.com
 [core]
-    editor = vim -c \"set fenc=utf-8\"
+    editor = nvim -c \"set fenc=utf-8\"
     pager = less
 [color]
     ui = auto
 [push]
     default = simple
 [merge]
-    tool = vimdiff
+    tool = nvim -d
 [log]
     date = iso
 [alias]
