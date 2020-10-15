@@ -95,12 +95,6 @@ nnoremap : ;
 inoremap <silent> jj <ESC>
 
 "
-" spell
-"
-set spell
-set spelllang=en,cjk
-
-"
 " windows
 "
 if has('win32') || has('win64')
