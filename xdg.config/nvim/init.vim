@@ -79,6 +79,7 @@ set incsearch
 set hlsearch
 set wrapscan
 set gdefault
+set inccommand=split
 
 "
 " ime
