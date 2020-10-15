@@ -5,19 +5,31 @@
     name = gomoh
     email = cs.gom.oh@gmail.com
 [core]
-    editor = nvim -c \"set fenc=utf-8\"
-    pager = lv
+    editor = nvim -c \"set fenc=utf-8 spell\"
+    pager = nvim -R
 [color]
-    ui = auto
+    ui = true
+    diff = false
 [push]
     default = simple
+[diff]
+    tool = nvimdiff
+[difftool]
+    prompt = false
+[difftool "nvimdiff"]
+    cmd = nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\"
 [merge]
-    tool = nvim -d
+    tool = nvimdiff
+[mergetool]
+    prompt = false
+[mergetool "nvimdiff"]
+    cmd = nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\"
 [log]
     date = iso
 [alias]
     vc = commit --verbose
     st = status --short --branch
+    di = difftool
     # log format
     #   colors : normal black red green yellow blue magenta cyan white
     #   style  : bold dim ul blink reverse
