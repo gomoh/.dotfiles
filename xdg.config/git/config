@@ -6,7 +6,7 @@
     email = cs.gom.oh@gmail.com
 [core]
     editor = nvim -c \"set fenc=utf-8\"
-    pager = less
+    pager = lv
 [color]
     ui = auto
 [push]
