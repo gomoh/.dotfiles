@@ -61,10 +61,10 @@ set matchtime=8
 set list
 set listchars=tab:\|\ ,trail:-,nbsp:+,
 
-set scrolloff=3
+set scrolloff=5
 
 set laststatus=2
-set statusline=%<%F%m\ %r%h%w[%{(&fenc!=''?&fenc:&enc)}][%{&fileformat}]%y%=[ASCII=%03.3b,0x%02.2B][%4cC,\ %l/%LL][%P]
+set statusline=%<%F%m\ %y%=[%2c,\ %l/%L:%P]
 
 if 256 <= &t_Co
   colorscheme wombat256
